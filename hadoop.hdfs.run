@@ -1,0 +1,11 @@
+#!/bin/bash
+
+bin=`which $0`
+bin=`dirname ${bin}`
+bin=`cd "$bin"; pwd`
+
+CLASSPATH=${CLASSPATH}:`${HADOOP_HOME}/bin/hadoop classpath --jar`
+
+
+./jnirun $@
+
