@@ -6,6 +6,5 @@ bin=`cd "$bin"; pwd`
 
 CLASSPATH=${CLASSPATH}:`${HADOOP_HOME}/bin/hadoop classpath --jar`
 
-
-./jnirun $@
+${bin}/jnirun "$@"
 
