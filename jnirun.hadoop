@@ -6,5 +6,9 @@ bin=`cd "$bin"; pwd`
 
 CLASSPATH=${CLASSPATH}:`${HADOOP_HOME}/bin/hadoop classpath --jar`
 
-${bin}/jnirun "$@"
+LD_LIBRARY_PATH=${HADOOP_HOME}/lib/native:${JAVA_HOME}/jre/lib/amd64:${JAVA_HOME}/jre/lib/amd64/server
+
+export LD_LIBRARY_PATH
+
+source ${bin}/jnirun "$@"
 

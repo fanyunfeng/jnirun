@@ -4,12 +4,15 @@ X_CLASS_PATH=${CLASSPATH}
 
 CLASSPATH=
 
-for xdir in `echo ${X_CLASS_PATH} | tr ':' '\n'`; do
-  for xfile in `ls ${xdir}`; do
-    CLASSPATH=${CLASSPATH}:$xfile
-  done
+for xfile in `echo ${X_CLASS_PATH} | tr ':' '\n'`; do
+  CLASSPATH=${CLASSPATH}:$xfile
 done
+
+if [ "ts" = "ts$1" ]; then
+  echo ${CLASSPATH} | tr ':' '\n'
+  exit 0;
+fi
 
 export CLASSPATH
 
-eval "$@"
+exec "$@"
